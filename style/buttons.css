@@ -1,0 +1,48 @@
+/* Set a style for the reset button and submit button */
+.flex-parent {
+    display: flex;
+  }
+  
+  .jc-center {
+    justify-content: center;
+  }
+  
+  button.margin-right {
+    margin-right: 20px;
+  }
+
+  #reset_btn,#reset_btns{
+    background-color: #80ac7b;
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    width: 350px;
+    font-size: 20px;
+    opacity: 0.9;
+    border-radius: 25px;
+  }
+
+  #reset_btn:hover,#reset_btns:hover{
+    background-color: #4CAF50;
+  }
+
+  #submit_btn{
+    background-color: #80ac7b;
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    width: 350px;
+    font-size: 20px;
+    opacity: 0.9;
+    border-radius: 25px;
+  }
+
+  #submit_btn:hover{
+    background-color: #4CAF50;
+  }

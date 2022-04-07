@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Online Property Rental System</title>
+    <link href="style/style.css" rel="stylesheet" type="text/css">
+    <link href="style/components.css" rel="stylesheet" type="text/css">
+    <link href="style/buttons.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Bootstrap 4 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
+    <script src="js/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <!--<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>-->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        .shows {
+            display: block;
+        }
+        
+        .hiddens {
+            display: none;
+        }
+    </style>
+</head>
+
+<body class="page">
+    <!-- Nav Bar -->
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <!-- Brand -->
+        <a class="navbar-brand" id="logo" href="homePage.html"><b>Property Rental System</b></a>
+
+        <!-- Links -->
+        <ul class="nav nav-pills nav-fill">
+            <li class="nav-item">
+                <a class="nav-link text-white" href="homePage.html">Home</a>
+            </li>
+            <li class="nav-item hiddens" id="rent">
+                <a class="nav-link text-white" href="rentalPage.html">Rent Property</a>
+            </li>
+            <li class="nav-item hiddens" id="become">
+                <a class="nav-link active btn-light" href="hostPage.html">Become a Host</a>
+            </li>
+            <li class="nav-item hiddens" id="myrentals">
+                <a class="nav-link text-white" href="myrentalPage.html">My Rentals</a>
+            </li>
+            <li class="nav-item hiddens" id="contact">
+                <a class="nav-link text-white" href="contactPage.html">Contact Us</a>
+            </li>
+
+        </ul>
+        <ul class="nav nav-pills nav-fill ml-auto ">
+            <li class="nav-item" id='loginbutton'>
+                <a class="nav-link text-white" data-toggle="modal" data-target="#loginForm" href="">Login</a>
+            </li>
+
+            <li class="nav-item" id='signbutton'>
+                <a class="nav-link text-white" data-toggle="modal" data-target="#signUpForm" href="">Sign Up</a>
+            </li>
+
+            <li class="nav-item hiddens" id='users'>
+                <a class="nav-link text-white" href="javascript:void(0)"></a>
+            </li>
+
+            <li class="nav-item hiddens" id='logout'>
+                <a class="nav-link text-white" href="javascript:void(0)" onclick="logout()">logout</a>
+            </li>
+
+        </ul>
+    </nav>
+    <br>
+    <!-- Modal Box for Login and Signup Form -->
+    <div class="modal fade" id="loginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold">User Login</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+                <div class="modal-body mx-3 ">
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input class="form-control" id="username1" placeholder="Enter Username">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input class="form-control" id="password1" placeholder="Enter Password" type='password'>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <button class="btn btn-dark btn-block" onclick="login()">Login <i class="fas fa-paper-plane-o ml-1"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="signUpForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold">New User Sign Up</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+                <div class="modal-body mx-3 ">
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input class="form-control" id="username" placeholder="Enter Username">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input class="form-control" id="password" placeholder="Enter Password" type='password'>
+                    </div>
+                    <div class="form-group">
+                        <label for="fullname">Full Name:</label>
+                        <input class="form-control" id="fullname" placeholder="Enter Your Full Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="fullname">Email:</label>
+                        <input class="form-control" id="email" placeholder="e.g. youremail@gmail.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="phonenumber">Phone Number:</label>
+                        <input class="form-control" id="phonenumber" placeholder="(012) 345-6789">
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <button class="btn btn-dark btn-block" onclick="register()">Sign Up <i class="fas fa-paper-plane-o ml-1"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="signup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Welcome!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+                <div class="modal-body">
+                    Your account has been created successfully.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Welcome!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+                <div class="modal-body">
+                    You have successfully logged in.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <form onsubmit="alert('Congratulations! Your application has been submitted successfully.');" id="hostpage" style="margin-left: 30px; margin-right:40px;" action="./api/bedroom.php" method="post" enctype="multipart/form-data">
+        <h2>Become a Host</h2>
+        <p>To become a host, please insert the details of your property:</p>
+        <hr>
+        <form>
+            <div class="row g-3">
+                <div class="col-6">
+                    <label for="name"><b>Full Name:</b></label><br>
+                    <input type="text" style="width: 500px;font-family: FontAwesome;" placeholder="&#xf2bb Enter Full Name" name="name" id="name" required><br>
+
+                    <label for="email"><b>Email:</b></label><br>
+                    <input type="text" style="width: 500px;font-family: FontAwesome;" placeholder="&#xf0e0 Enter Email" name="email" id="email" required><br>
+
+                    <label for="address"><b>Property Address:</b></label><br>
+                    <input type="text" style="width: 500px;font-family: FontAwesome;" placeholder="&#xf276 Enter Property Address" name="address" id="address" required><br>
+
+
+                    <label><b>Property Type:</b></label><br>
+                    <div class="row g-3">
+                        <div class="col-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="apartment" name="property_type" value="apartment">
+                                <label class="form-check-label" for="apartment">
+                                        Apartment
+                                    </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="condo" name="property_type" value="condo">
+                                <label class="form-check-label" for="condo">
+                                        Condo
+                                    </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="townhouse" name="property_type" value="townhouse">
+                                <label class="form-check-label" for="townhouse">
+                                        Townhouse
+                                    </label>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="house" name="property_type" value="house">
+                                <label class="form-check-label" for="house">
+                                        Independent House
+                                    </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="semi_house" name="property_type" value="semi_house">
+                                <label class="form-check-label" for="semi_house">
+                                        Semi-Independent House
+                                    </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="other" name="property_type" value="other">
+                                <label class="form-check-label" for="other">
+                                        Other
+                                    </label>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+                <div class="col-4">
+                    <label for="bedroom_num"><b>Number of Bedroom(s):</b></label><br>
+                    <input type="text" style="width: 500px;font-family: FontAwesome;" placeholder="&#xf236 Enter the Number of Bedroom(s)" name="bedroom_num" id="bedroom_num" required><br>
+
+                    <label for="bathroom_num"><b>Number of Bathroom(s):</b></label><br>
+                    <input type="text" style="width: 500px;font-family: FontAwesome;" placeholder="&#xf2cd Enter the Number of Bathroom(s)" name="bathroom_num" id="bathroom_num" required><br>
+
+                    <label for="rent"><b>Desired Rent ($CAD):</b></label><br>
+                    <input type="text" style="width: 500px;font-family: FontAwesome;" placeholder="&#xf155 Enter Desired Rent" name="rent" id="rent" required><br>
+
+                    <label for="bedroom_img"><b>Img of Bedroom(s):</b></label><br>
+                    <input type="file" style="width: 500px;font-family: FontAwesome;" name="bedroom_img" id="bedroom_img" required><br>
+                </div>
+            </div>
+            <hr>
+            <input type="hidden" name="action" value="add">
+            <input type="checkbox" id="acknowledge" name="acknowledge" value="acknowledge" required>
+            <label for="acknowledge"> I acknowledge that the above information is correct.</label><br><br>
+        </form>
+    </form>
+    <div style="margin-bottom: 50px;" class="flex-parent d-flex mx-3 justify-content-center">
+        <button type="reset" style="width:250px" class="bg-dark margin-right d-flex mx-3 justify-content-center" id="reset_btn">Reset</button>
+        <button type="submit" style="width:250px" class="bg-dark margin-right d-flex mx-3 justify-content-center" id="submit_btn" form="hostpage">Submit</button>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="page-footer font-small unique-color-dark">
+        <div class="container-fluid text-center text-md-left bg-dark text-white">
+            <div class="row mt-3">
+                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-1" style="margin-top: 20px;">
+                    <h6 class="text-uppercase font-weight-bold">Property Rental System</h6>
+                    <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                    <p>Come and Become hosts or our customers today, we will give you our best services!</p>
+                </div>
+                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-1" style="margin-top: 20px;">
+                    <h6 class="text-uppercase font-weight-bold">Business Hours</h6>
+                    <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                    <p>Monday - Friday</p>
+                    <p>9am - 5pm</p>
+                    </p>
+                </div>
+                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-1" style="margin-top: 20px;">
+                    <h6 class="text-uppercase font-weight-bold">Office Address</h6>
+                    <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                    <p>123 University Drive</p>
+                    <p>Ottawa, ON</a>
+                    </p>
+                    </p>
+                </div>
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-1" style="margin-top: 20px;">
+                    <h6 class="text-uppercase font-weight-bold">Contact</h6>
+                    <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                    <p><img src="images/emailicon.png" style="width: 20px; height:20px" />&nbsp;onlinerentalservices@gmail.com</p>
+                    <p><img src="images/phoneicon.png" style="width: 20px; height:20px" />&nbsp;+1 (613) 567-8899</p>
+                </div>
+            </div>
+        </div>
+        <!-- Copyright -->
+        <div class="footer-copyright bg-dark text-center text-primary py-3">© 2022 Copyright: project-3140_proj
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+
+    <script src="hostPage.js"></script>
+</body>
+
+</html>
