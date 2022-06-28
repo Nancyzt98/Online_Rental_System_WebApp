@@ -1,4 +1,4 @@
-# project-3140_proj
+# Online Rental System Web App
 Student1: Zihan Xiao 300048507 <br/>
 Student2: Tong Zhao  300037013 <br/>
 Student3: Wei Liu    300005620 <br/>
